@@ -106,7 +106,7 @@ func main() {
 		}
 	}
 
-	// Do something with the jobs slice
+	// Do something with the jobs
 	//fmt.Println(jobs)
 }
 
