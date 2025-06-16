@@ -78,7 +78,7 @@ func main() {
 					logger.Error("Error parsing start time:", "error", err.Error(), "record", strings.Join(record, ","))
 					continue
 				}
-				// Initialize the job with the start time
+				// Initialize the job with the start time. The key with the pid and job name is used to ensure uniqueness as it is unlikely to have jobs with the same name and pid in a short time frame.
 				jobs[record[3]+"_"+strings.ReplaceAll(record[1], " ", "_")] = models.Job{
 					StartTime: startTime,
 					Pid:       record[3],
@@ -91,7 +91,7 @@ func main() {
 					logger.Error("Error parsing end time:", "error", err.Error(), "record", strings.Join(record, ","))
 					continue
 				}
-				// Initialize the job with the end time
+				// Initialize the job with the end time. The key with the pid and job name is used to ensure uniqueness as it is unlikely to have jobs with the same name and pid in a short time frame.
 				jobs[record[3]+"_"+strings.ReplaceAll(record[1], " ", "_")] = models.Job{
 					EndTime: endTime,
 					Pid:     record[3],
@@ -106,7 +106,7 @@ func main() {
 		}
 	}
 
-	// Do something with the jobs
+	// Do something with the jobs map
 	//fmt.Println(jobs)
 }
 
